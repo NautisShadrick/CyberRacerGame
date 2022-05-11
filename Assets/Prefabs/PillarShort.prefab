@@ -206,4 +206,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: {fileID: 6400465417155117748, guid: 8a0d3c9f0162b974ab8b56cce2eeec7d, type: 3}
-  chanceToSpawn: 100
+  chanceToSpawn: 50
