@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!dead)
         {
-            score += Time.deltaTime * scoreRate;
+            //score += Time.deltaTime * scoreRate;
             globalSpeedFactor += Time.deltaTime * speedRate;
         }
         scoreText.text = score.ToString("000000");
@@ -148,12 +148,15 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        aS.PlayOneShot(nearMissClip, 0.5f);
-        GameObject.FindGameObjectWithTag("CC").GetComponent<Animator>().SetTrigger("Flash");
-        currentCombo++;
-        score += 10 * currentCombo;
-        comboAnim.SetTrigger("popup");
-
+        if (other.gameObject.tag == "Coin")
+        {
+            aS.PlayOneShot(nearMissClip, 0.5f);
+            GameObject.FindGameObjectWithTag("CC").GetComponent<Animator>().SetTrigger("Flash");
+            currentCombo++;
+            score += 10 * currentCombo;
+            comboAnim.SetTrigger("popup");
+            Destroy(other.gameObject);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

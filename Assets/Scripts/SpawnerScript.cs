@@ -45,13 +45,13 @@ public class SpawnerScript : MonoBehaviour
         foreach (Transform spawner in spawners)
         {
             float newRoll = Random.Range(1f,100f);
-            float shortRoll = Random.Range(1f,100f);
+            float specialRoll = Random.Range(1f,100f);
             int pillarDex;
-            if(shortRoll < 20)
+            if (specialRoll < 20)
             {
                 pillarDex = 1;
             }
-            else
+            else 
             {
                 pillarDex = 0;
             }
@@ -64,8 +64,11 @@ public class SpawnerScript : MonoBehaviour
                 Vector3 newScale = new Vector3(Random.Range(scaleRangeX.x,scaleRangeX.y),newPillar.transform.localScale.y,Random.Range(scaleRangeZ.x,scaleRangeZ.y));
                 newPillar.transform.localScale = newScale;
 
-                PillarScript ps = newPillar.GetComponent<PillarScript>();
-                ps.SetSpeed(currentSpeedMult);
+                if (newPillar.GetComponent<PillarScript>())
+                {
+                    PillarScript ps = newPillar.GetComponent<PillarScript>();
+                    ps.SetSpeed(currentSpeedMult);
+                }
 
                 //Destroy(newPillar, 10f);
             }
