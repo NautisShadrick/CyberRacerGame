@@ -29,9 +29,13 @@ public class CoinScript : MonoBehaviour
         if (newCoin)
         {
             newCoin.transform.position = transform.position;
+            if(newCoin.transform.position.z <= 1)
+            {
+                Destroy(newCoin);
+            }
         }
 
-        if (transform.position.z <= -1)
+        if (transform.position.z <= 0)
         {
             Destroy(gameObject);
         }
